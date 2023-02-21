@@ -1,0 +1,9 @@
+{
+	"name": "googledatafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "426f7b76-44c7-4be9-b535-4d5e42a25498",
+		"tenantId": "d1b36e95-0d50-42e9-958f-b63fa906beaa"
+	}
+}
