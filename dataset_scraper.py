@@ -27,21 +27,21 @@ for file in raw_files:
 #grabbing latest 12 filenames
 data_files = dict(sorted(files.items(), reverse=True)[:12])
 
-for file_name in data_files.keys():
-    path = Path("google_datasets/" + file_name.replace("zip", "csv"))
-    if path.is_file() == False:
-        r = requests.get(data_files.get(file_name))
-        with ZipFile(io.BytesIO(r.content)) as f:
-            f.extractall(Path("google_datasets"))
-            os.rename(Path("google_datasets/" + f.namelist()[0]), Path("google_datasets/" + file_name.replace("zip", "csv")))
-        f.close()
+# for file_name in data_files.keys():
+#     path = Path("google_datasets/" + file_name.replace("zip", "csv"))
+#     if path.is_file() == False:
+#         r = requests.get(data_files.get(file_name))
+#         with ZipFile(io.BytesIO(r.content)) as f:
+#             f.extractall(Path("google_datasets"))
+#             os.rename(Path("google_datasets/" + f.namelist()[0]), Path("google_datasets/" + file_name.replace("zip", "csv")))
+#         f.close()
 
-#removing files that do not exist in data_files list
-for file_name in os.listdir("google_datasets"):
-    if file_name.replace("csv", "zip") not in data_files.keys() and os.path.isdir(Path("google_datasets/" + file_name)) == False:
-        path = Path("google_datasets/" + file_name)
-        Path.unlink(path, missing_ok=True)
-    elif os.path.isdir(Path("google_datasets/" + file_name)) == True:
-        shutil.rmtree(Path("google_datasets/" + file_name))
-    else:
-        pass
+# #removing files that do not exist in data_files list
+# for file_name in os.listdir("google_datasets"):
+#     if file_name.replace("csv", "zip") not in data_files.keys() and os.path.isdir(Path("google_datasets/" + file_name)) == False:
+#         path = Path("google_datasets/" + file_name)
+#         Path.unlink(path, missing_ok=True)
+#     elif os.path.isdir(Path("google_datasets/" + file_name)) == True:
+#         shutil.rmtree(Path("google_datasets/" + file_name))
+#     else:
+#         pass

@@ -1,9 +1,12 @@
 name: Load Google Datasets
 
 on:
+  push:
+    branches:
+        - "function_test"
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: '0 0 1 * *'
+    - cron: "0 0 1 * *"
 
 jobs:
   build-linux:
@@ -12,15 +15,19 @@ jobs:
       max-parallel: 5
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.10'
-    - name: Add conda to system path
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
-    - name: Install dependencies
-      run: |
-        conda env update --file environment.yml
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Add conda to system path
+        run: |
+          # $CONDA is an environment variable pointing to the root of the miniconda directory
+          echo $CONDA/bin >> $GITHUB_PATH
+      - name: Install dependencies
+        run: |
+          conda env update --file environment.yml
+      - name: Run migrations
+        run: python dataset_scraper
+        env:
+          XML_LINK: ${{ vars.XML_LINK }}
