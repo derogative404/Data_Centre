@@ -3,6 +3,7 @@ dependencies:
 - python>=3.9
 - pip
 - pip:
-  - bs4
+  - beautifulsoup4
+  - lxml
   - requests
   - python-dotenv
