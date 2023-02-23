@@ -1,0 +1,23 @@
+{
+	"name": "google_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "google_data_store",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "google_datasets",
+				"container": "googledatasets"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
