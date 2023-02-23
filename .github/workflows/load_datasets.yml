@@ -29,10 +29,10 @@ jobs:
       - name: Install dependencies
         run: |
           conda env update --file .github/workflows/environment.yml
-      - name: Show an environment variable
-        run: |
-          echo "today is ${{vars.XML_LINK}}"
-      # - name: Run migrations
-      #   run: python .github/workflows/dataset_scraper.py
-      #   env:
-      #     XML_LINK: ${{ vars.XML_LINK }}
+      # - name: Show an environment variable
+      #   run: |
+      #     echo "today is ${{vars.XML_LINK}}"
+      - name: Get datasets
+        run: python .github/workflows/dataset_scraper.py
+        env:
+          XML_LINK: ${{ vars.XML_LINK }}

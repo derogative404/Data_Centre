@@ -5,13 +5,9 @@ from zipfile import ZipFile
 import io
 import os
 import shutil
-from dotenv import load_dotenv
-
-# loading environment_variables
-load_dotenv()
 
 # preparing to scrape file data from XML file
-xml_data = requests.get(os.getenv('XML_LINK')).content
+xml_data = requests.get(os.environ.get('XML_LINK')).content
 soup = BeautifulSoup(xml_data, "xml")
 
 # Find the Key XML tag that contains the names of the latest files
@@ -22,7 +18,7 @@ for file in raw_files:
     if file.text.startswith("Divvy"):
         break
     else:
-        files.update({str(file.text).strip(): os.getenv('XML_LINK') + str(file.text).strip()})
+        files.update({str(file.text).strip(): os.environ.get('XML_LINK') + str(file.text).strip()})
 
 #grabbing latest 12 filenames
 data_files = dict(sorted(files.items(), reverse=True)[:12])
