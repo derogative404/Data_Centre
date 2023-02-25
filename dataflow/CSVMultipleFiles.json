@@ -46,7 +46,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     rowUrlColumn: 'file_name',",
-				"     wildcardPaths:['*.csv']) ~> CSVFILES",
+				"     wildcardPaths:['googledatasets/google_datasets/*.csv']) ~> CSVFILES",
 				"CSVFILES sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
