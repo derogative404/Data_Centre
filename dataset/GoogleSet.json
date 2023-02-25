@@ -1,0 +1,24 @@
+{
+	"name": "GoogleSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureGoogleStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "202202-divvy-tripdata.csv",
+				"folderPath": "google_datasets",
+				"container": "googledatasets"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
