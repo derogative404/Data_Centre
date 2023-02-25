@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "202202-divvy-tripdata.csv",
 				"folderPath": "google_datasets",
 				"container": "googledatasets"
 			},
