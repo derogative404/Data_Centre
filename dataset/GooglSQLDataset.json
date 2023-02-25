@@ -1,0 +1,16 @@
+{
+	"name": "GooglSQLDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GoogleDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CyclisticRideShare"
+		}
+	}
+}

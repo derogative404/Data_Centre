@@ -3,11 +3,55 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
-			"sinks": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "GoogleSet",
+						"type": "DatasetReference"
+					},
+					"name": "CSVFILES"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "GooglSQLDataset",
+						"type": "DatasetReference"
+					},
+					"name": "SQLDB"
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
-				""
+				"source(output(",
+				"          ride_id as string,",
+				"          rideable_type as string,",
+				"          started_at as timestamp,",
+				"          ended_at as timestamp,",
+				"          start_station_name as string,",
+				"          start_station_id as string,",
+				"          end_station_name as string,",
+				"          end_station_id as string,",
+				"          start_lat as double,",
+				"          start_lng as double,",
+				"          end_lat as double,",
+				"          end_lng as double,",
+				"          member_casual as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'file_name') ~> CSVFILES",
+				"CSVFILES sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> SQLDB"
 			]
 		}
 	}
