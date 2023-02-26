@@ -1,0 +1,101 @@
+{
+	"name": "DestinationDataset_4zm",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GoogleDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ride_id",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "rideable_type",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "started_at",
+				"type": "datetime2",
+				"precision": 27,
+				"scale": 7
+			},
+			{
+				"name": "ended_at",
+				"type": "datetime2",
+				"precision": 27,
+				"scale": 7
+			},
+			{
+				"name": "start_station_name",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "start_station_id",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "member_casual",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "file_name",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "end_station_name",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "end_station_id",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "start_lat",
+				"type": "float",
+				"precision": 53,
+				"scale": 0
+			},
+			{
+				"name": "start_lng",
+				"type": "float",
+				"precision": 53,
+				"scale": 0
+			},
+			{
+				"name": "end_lat",
+				"type": "float",
+				"precision": 53,
+				"scale": 0
+			},
+			{
+				"name": "end_lng",
+				"type": "float",
+				"precision": 53,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CyclisticRideShare"
+		}
+	}
+}

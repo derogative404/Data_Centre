@@ -1,0 +1,245 @@
+{
+	"name": "Add_google_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_4zm",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "googledatasets/google_datasets/"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.CyclisticRideShare"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "file_name",
+								"value": "$$FILEPATH"
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ride_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ride_id",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "rideable_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "rideable_type",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "started_at",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "started_at",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "ended_at",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ended_at",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "start_station_name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "start_station_name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "start_station_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "start_station_id",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "end_station_name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "end_station_name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "end_station_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "end_station_id",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "start_lat",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "start_lat",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "start_lng",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "start_lng",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "end_lat",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "end_lat",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "end_lng",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "end_lng",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "member_casual",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "member_casual",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "file_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "file_name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_4zm",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_4zm",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
